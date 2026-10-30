@@ -1,0 +1,24 @@
+{
+  "as_of": "2026-10-30",
+  "research_question": "How does venue architecture change counterparty, execution, funding and liquidity-provider risk in perpetual DEXs?",
+  "scope": "Public documentation of Sai, Hyperliquid, GMX and dYdX Chain. Feature matrix is qualitative; not a live performance ranking.",
+  "protocols": [
+    {
+      "name": "Sai", "execution": "Oracle-settled automated market maker", "liquidity": "SLP liquidity vaults", "collateral_and_settlement": "USDC / stNIBI supported; self-custodied; gasless trading (bridge gas still possible)",
+      "funding_model": "OI-imbalance borrowing fee charged to crowded side; not necessarily paid to opposite-side traders", "fee_mechanism": "0.05% base taker; 0% maker; 0.01% trigger; additional decaying rapid-close fee applies to very short holds", "risk_focus": "Oracle integrity, pool solvency, dynamic leverage and rapid-close costs", "caveat": "Fee schedule and protected market parameters can change; no direct performance claim.",
+      "source_urls": ["https://sai.fun/docs/learn", "https://sai.fun/docs/learn/trading/fees", "https://sai.fun/docs/dev/sai-core/"]
+    },
+    {
+      "name": "Hyperliquid", "execution": "Onchain central-limit-order-book-style matching (price-time priority)", "liquidity": "Resting maker orders and market makers", "collateral_and_settlement": "HyperCore clearinghouse and margin engine", "funding_model": "Perpetual funding payments for spot-price convergence", "fee_mechanism": "Order book spread and maker/taker economics (rates excluded pending fee-tier snapshot)", "risk_focus": "Order-book depth, market-maker concentration, oracle/mark and margining", "caveat": "Order-book state may diverge from quoted liquidity under stress; effective fees vary by account tier.",
+      "source_urls": ["https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/order-book", "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/contract-specifications", "https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/oracle"]
+    },
+    {
+      "name": "GMX", "execution": "Oracle-priced pool-based perpetual execution", "liquidity": "GM / GLV vault liquidity", "collateral_and_settlement": "Liquidity pools back trader profits and losses", "funding_model": "Adaptive funding plus utilization/borrowing fees", "fee_mechanism": "Published open/close fees and separate open-interest-imbalance price impact, borrowing and network fees", "risk_focus": "Pool PnL limits, utilization and withdrawal constraints", "caveat": "Fee and price impact vary by market, position and conditions.",
+      "source_urls": ["https://docs.gmx.io/docs/intro/", "https://docs.gmx.io/docs/providing-liquidity/", "https://docs.gmx.io/docs/trading/fees/"]
+    },
+    {
+      "name": "dYdX Chain", "execution": "Validator-maintained in-memory order books with block matching", "liquidity": "Distributed resting orders / market makers", "collateral_and_settlement": "Cosmos SDK application-chain software; validator consensus", "funding_model": "Perpetual market funding (specific rate formulas not compared)", "fee_mechanism": "Order book / maker-taker design; absolute rates excluded pending current protocol snapshot", "risk_focus": "Order dissemination, mempool latency, consensus, liquidations", "caveat": "Documentation applies to dYdX Chain software; deployed instances can vary.",
+      "source_urls": ["https://docs.dydx.exchange/", "https://docs.dydx.exchange/concepts-limit-order-book-and-matching", "https://docs.dydx.exchange/introduction-onboarding_faqs"]
+    }
+  ]
+}
